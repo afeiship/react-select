@@ -7,6 +7,8 @@ import SemverWebpackPlugin from 'semver-webpack-plugin';
 export default merge(baseConfig, {
   entry: './src/main.js',
   output: {
+    library: 'ReactSelect',
+    libraryTarget: 'umd',
     filename: 'index.js'
   },
   externals: {
