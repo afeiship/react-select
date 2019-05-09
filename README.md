@@ -18,13 +18,13 @@ npm install -S afeiship/react-select
   ```js
   import React from 'react';
   import ReactDOM from 'react-dom';
-  import BoilerplateReactCompnent from 'react-select';
+  import ReactSelect from 'react-select';
   
   // your app:
   class App extends React.Component{
     render(){
       return (
-        <BoilerplateReactCompnent />
+        <ReactSelect />
       )
     }
   }
