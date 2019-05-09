@@ -1,2 +1,2 @@
-import ReactSelect from 'components/react-select';
+import ReactSelect from './components';
 export default ReactSelect;

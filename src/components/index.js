@@ -13,14 +13,14 @@ export default class extends Component {
     onChange: PropTypes.func,
     items: PropTypes.array,
     value: PropTypes.any,
-    multiple: PropTypes.bool,
+    multiple: PropTypes.bool
   };
 
   static defaultProps = {
     onChange: noop,
     items: [],
     value: [],
-    multiple: true
+    multiple: false
   };
   /*===properties end===*/
 
@@ -44,15 +44,15 @@ export default class extends Component {
   change(inValue) {
     const { multiple, onChange } = this.props;
     const value = multiple ? inValue : inValue[0];
-    const event = {
-      target: { value }
-    };
+    const event = { target: { value } };
     onChange(event);
   }
 
-  _onChange = inEvent => {
+  _onChange = (inEvent) => {
     const { options } = inEvent.target;
-    const value = nxToArray(options).filter(item => item.selected).map(item => item.value);
+    const value = nxToArray(options)
+      .filter((item) => item.selected)
+      .map((item) => item.value);
     this.setState({ value }, () => {
       this.change(value);
     });
@@ -62,16 +62,17 @@ export default class extends Component {
     const { className, items, value, onChange, ...props } = this.props;
     return (
       <select
-        className={classNames('react-web-select', className)}
+        className={classNames('react-select', className)}
         value={this.state.value}
-        onChange={this._onChange} {...props}>
-        {
-          items.map(item => {
-            return (
-              <option key={item.value} value={item.value}>{item.label}</option>
-            )
-          })
-        }
+        onChange={this._onChange}
+        {...props}>
+        {items.map((item) => {
+          return (
+            <option key={item.value} value={item.value}>
+              {item.label}
+            </option>
+          );
+        })}
       </select>
     );
   }

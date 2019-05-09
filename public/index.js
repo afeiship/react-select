@@ -1,10 +1,7 @@
-import './dev.scss';
-import ReactSelect from './main';
-
-/*===example start===*/
-
-// install: npm install afeiship/react-select --save
-// import : import ReactSelect from 'react-select'
+import ReactSelect from '../src/main';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import './assets/style.scss';
 
 class App extends React.Component {
   state = {
@@ -46,35 +43,38 @@ class App extends React.Component {
     ]
   };
 
-  constructor(props) {
-    super(props);
-    window.demo = this;
-    window.refs = this.refs;
-    window.rc = this.refs.rc;
-  }
-
-  _onChange1 = e => {
+  _onChange1 = (e) => {
     const { value } = e.target;
     console.log(value);
   };
 
-  _onChange2 = e => {
+  _onChange2 = (e) => {
     const { value } = e.target;
     console.log(value);
   };
 
   render() {
     return (
-      <div className="hello-react-select">
-        <ReactSelect items={this.state.items1} className="s1" multiple={false} onChange={this._onChange1} />
-        <ReactSelect items={this.state.items2} className="s2" multiple={true} onChange={this._onChange2} />
+      <div className="app-container">
+        <div className="row">
+          <ReactSelect
+            items={this.state.items1}
+            className="s1"
+            multiple={false}
+            onChange={this._onChange1}
+          />
+        </div>
+        <div className="row">
+          <ReactSelect
+            items={this.state.items2}
+            className="s2"
+            multiple={true}
+            onChange={this._onChange2}
+          />
+        </div>
       </div>
     );
   }
 }
-/*===example end===*/
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById('app'));

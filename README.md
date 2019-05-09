@@ -1,115 +1,43 @@
 # react-select
-> Select for react
+> Web select for react.
 
-## properties:
-```javascript
-
-  static propTypes = {
-    className: PropTypes.string,
-    onChange: PropTypes.func,
-    items: PropTypes.array,
-    value: PropTypes.any,
-    multiple: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    onChange: noop,
-    items: [],
-    value: [],
-    multiple: true
-  };
-  
+## install:
+```shell
+npm install -S afeiship/react-select
 ```
-
-## install && import:
-```bash
-npm install --save afeiship/react-select --registry=https://registry.npm.taobao.org
-```
-
-```js
-import ReactSelect from 'react-select';
-```
-
-```scss
-// customize your styles:
-$react-select-options:(
-);
-
-@import 'node_modules/react-select/dist/style.scss';
-```
-
 
 ## usage:
-```jsx
+1. import css
+  ```scss
+  @import "~react-select/style.scss";
 
-// install: npm install afeiship/react-select --save
-// import : import ReactSelect from 'react-select'
-
-class App extends React.Component {
-  state = {
-    items1: [
-      {
-        value: 0,
-        label: 'option0'
-      },
-      {
-        value: 1,
-        label: 'option1'
-      },
-      {
-        value: 2,
-        label: 'option2'
-      },
-      {
-        value: 3,
-        label: 'option3'
-      }
-    ],
-    items2: [
-      {
-        value: 0,
-        label: 'option00'
-      },
-      {
-        value: 1,
-        label: 'option11'
-      },
-      {
-        value: 2,
-        label: 'option22'
-      },
-      {
-        value: 3,
-        label: 'option33'
-      }
-    ]
-  };
-
-  constructor(props) {
-    super(props);
-    window.demo = this;
-    window.refs = this.refs;
-    window.rc = this.refs.rc;
+  // customize your styles:
+  $react-select-options: ()
+  ```
+2. import js
+  ```js
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import BoilerplateReactCompnent from 'react-select';
+  
+  // your app:
+  class App extends React.Component{
+    render(){
+      return (
+        <BoilerplateReactCompnent />
+      )
+    }
   }
 
-  _onChange1 = e => {
-    const { value } = e.target;
-    console.log(value);
-  };
+  // render to dom:
+  ReactDOM.render(<App/>, document.getElementById('app'));
+  ```
 
-  _onChange2 = e => {
-    const { value } = e.target;
-    console.log(value);
-  };
+## docs:
+- https://afeiship.github.io/react-select/
 
-  render() {
-    return (
-      <div className="hello-react-select">
-        <ReactSelect items={this.state.items1} className="s1" multiple={false} onChange={this._onChange1} />
-        <ReactSelect items={this.state.items2} className="s2" multiple={true} onChange={this._onChange2} />
-      </div>
-    );
-  }
-}
-
-```
+## resouces:
+- https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
+- https://www.valentinog.com/blog/react-webpack-babel/
+- https://jestjs.io/docs/en/tutorial-react#snapshot-testing-with-mocks-enzyme-and-react-16
+- https://testing-library.com/docs/react-testing-library/api
