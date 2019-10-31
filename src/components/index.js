@@ -4,72 +4,39 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from 'noop';
 import objectAssign from 'object-assign';
-import nxToArray from 'next-to-array';
+
+const CLASS_NAME = 'react-select';
 
 export default class extends Component {
+  static displayName = CLASS_NAME;
+
   /*===properties start===*/
   static propTypes = {
     className: PropTypes.string,
-    onChange: PropTypes.func,
+    value: PropTypes.string,
+    defaultValue: PropTypes.string,
     items: PropTypes.array,
-    value: PropTypes.any,
-    multiple: PropTypes.bool
+    onChange: PropTypes.func
   };
 
   static defaultProps = {
-    onChange: noop,
     items: [],
-    value: [],
-    multiple: false
+    onChange: noop
   };
   /*===properties end===*/
 
-  constructor(inProps) {
-    super(inProps);
-    const { value, multiple } = inProps;
-    this.state = {
-      value: multiple ? value : value[0]
-    };
-  }
-
-  componentWillReceiveProps(inProps) {
-    const { value } = inProps;
-    if (value !== this.state.value) {
-      this.setState({ target: { value } }, () => {
-        this.change(value);
-      });
-    }
-  }
-
-  change(inValue) {
-    const { multiple, onChange } = this.props;
-    const value = multiple ? inValue : inValue[0];
-    const event = { target: { value } };
-    onChange(event);
-  }
-
-  _onChange = (inEvent) => {
-    const { options } = inEvent.target;
-    const value = nxToArray(options)
-      .filter((item) => item.selected)
-      .map((item) => item.value);
-    this.setState({ value }, () => {
-      this.change(value);
-    });
-  };
-
   render() {
-    const { className, items, value, onChange, ...props } = this.props;
+    const { className, items, ...props } = this.props;
     return (
       <select
-        className={classNames('react-select', className)}
-        value={this.state.value}
-        onChange={this._onChange}
+        data-component={CLASS_NAME}
+        className={classNames(CLASS_NAME, className)}
         {...props}>
-        {items.map((item) => {
+        {items.map((item, index) => {
+          const { label, value, ...itemProps } = item;
           return (
-            <option key={item.value} value={item.value}>
-              {item.label}
+            <option value={value} key={index} {...itemProps}>
+              {label}
             </option>
           );
         })}

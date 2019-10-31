@@ -1,12 +1,14 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { shallow } from 'enzyme';
 import BoilerplateReactCompnent from '../src/main';
 
 describe('Basic Test', () => {
   it('renders to document', () => {
-    const { container } = render(<BoilerplateReactCompnent />);
-    const cnt = container.querySelector('.react-select')
-      .innerHTML;
+    const component = shallow(<BoilerplateReactCompnent />);
+    const cnt = component.find('.react-component');
+    cnt.simulate('click');
     expect(cnt).toMatch(/Hello React/);
   });
 });
+
+

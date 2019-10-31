@@ -5,73 +5,35 @@ import './assets/style.scss';
 
 class App extends React.Component {
   state = {
-    items1: [
+    items: [
       {
-        value: 0,
-        label: 'option0'
+        label: 'optino1',
+        value: 'v1'
       },
       {
-        value: 1,
-        label: 'option1'
+        label: 'optino2',
+        value: 'v2'
       },
       {
-        value: 2,
-        label: 'option2'
-      },
-      {
-        value: 3,
-        label: 'option3'
-      }
-    ],
-    items2: [
-      {
-        value: 0,
-        label: 'option00'
-      },
-      {
-        value: 1,
-        label: 'option11'
-      },
-      {
-        value: 2,
-        label: 'option22'
-      },
-      {
-        value: 3,
-        label: 'option33'
+        label: 'optino3',
+        value: 'v3'
       }
     ]
   };
 
-  _onChange1 = (e) => {
-    const { value } = e.target;
-    console.log(value);
-  };
+  constructor(inProps) {
+    super(inProps);
+    this._onChange = this._onChange.bind(this);
+  }
 
-  _onChange2 = (e) => {
-    const { value } = e.target;
-    console.log(value);
-  };
+  _onChange(inEvent) {
+    console.log(inEvent.target.value);
+  }
 
   render() {
     return (
       <div className="app-container">
-        <div className="row">
-          <ReactSelect
-            items={this.state.items1}
-            className="s1"
-            multiple={false}
-            onChange={this._onChange1}
-          />
-        </div>
-        <div className="row">
-          <ReactSelect
-            items={this.state.items2}
-            className="s2"
-            multiple={true}
-            onChange={this._onChange2}
-          />
-        </div>
+        <ReactSelect defaultValue="v1" items={this.state.items} onChange={this._onChange} />
       </div>
     );
   }

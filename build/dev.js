@@ -1,20 +1,11 @@
-import { resolve } from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import baseConfig from '.';
 import merge from 'webpack-merge';
+import { configs, inputs, outputs, loaders, plugins } from 'webpack-lib-kits';
 
 export default merge(baseConfig, {
-  entry: './public/index.js',
-  output: {
-    filename: './assets/bundle.[hash].js'
-  },
-  devServer: {
-    host: '0.0.0.0'
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      favicon: resolve(__dirname, '../public/assets/favicon.ico'),
-      template: resolve(__dirname, '../public/index.ejs')
-    })
-  ]
+  entry: inputs.docs(),
+  output: outputs.dev(),
+  devtool: configs.devtool(),
+  devServer: configs.devServer(),
+  plugins: [plugins.html()]
 });
