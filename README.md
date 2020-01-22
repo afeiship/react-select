@@ -28,35 +28,64 @@ npm update @feizheng/react-select
   ```
 2. import js
   ```js
-  import React from 'react';
+  import ReactSelect from '../src/main';
   import ReactDOM from 'react-dom';
-  import ReactSelect from '@feizheng/react-select';
-  
-  // your app:
-  class App extends React.Component{
-    render(){
+  import React from 'react';
+  import './assets/style.scss';
+
+  class App extends React.Component {
+    state = {
+      items: [
+        {
+          label: 'optino1',
+          value: 'v1'
+        },
+        {
+          label: 'optino2',
+          value: 'v2'
+        },
+        {
+          label: 'optino3',
+          value: 'v3'
+        }
+      ]
+    };
+
+    constructor(inProps) {
+      super(inProps);
+      this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(inEvent) {
+      console.log('value:', inEvent.target.value);
+    }
+
+    render() {
       return (
-        <ReactSelect />
-      )
+        <div className="app-container">
+          <p>
+            <ReactSelect
+              defaultValue={['v1']}
+              multiple
+              items={this.state.items}
+              onChange={this.onChange}
+            />
+          </p>
+
+          <p>
+            <ReactSelect
+              defaultValue="v2"
+              items={this.state.items}
+              onChange={this.onChange}
+            />
+          </p>
+        </div>
+      );
     }
   }
 
-  // render to dom:
-  ReactDOM.render(<App/>, document.getElementById('app'));
+  ReactDOM.render(<App />, document.getElementById('app'));
   ```
 
 ## documentation
 - https://afeiship.github.io/react-select/
-
-## resources
-- https://www.robinwieruch.de/minimal-react-webpack-babel-setup/
-- https://www.valentinog.com/blog/react-webpack-babel/
-- https://jestjs.io/docs/en/tutorial-react#snapshot-testing-with-mocks-enzyme-and-react-16
-- https://testing-library.com/docs/react-testing-library/api
-
-## todos
-- [ ] Add: semver number for every build files.
-- [ ] Add: need output css files.
-- [ ] Add: PWA support for docs.
-- [ ] Add: source.map file for dist(`you can upload for production debug`).
-- [ ] BUG: npm run dev will clean dist.
