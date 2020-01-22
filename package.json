@@ -1,6 +1,6 @@
 {
   "name": "@feizheng/react-select",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pure select for react.",
   "main": "dist/index.js",
   "scripts": {
