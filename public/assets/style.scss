@@ -13,22 +13,11 @@ body,
 
 .app-container {
   padding: 50px;
-  .button {
-    background: #3cc51f;
+  box-sizing: border-box;
+  select {
     width: 100%;
-    display: block;
+  }
+  p {
     margin-bottom: 10px;
-    border-radius: 10px;
-    color: #fff;
-    padding: 20px;
-    border: none;
-
-    &:active {
-      background: darken(#3cc51f, 10%);
-    }
-
-    &:focus {
-      outline: none;
-    }
   }
 }

@@ -23,17 +23,32 @@ class App extends React.Component {
 
   constructor(inProps) {
     super(inProps);
-    this._onChange = this._onChange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
-  _onChange(inEvent) {
-    console.log(inEvent.target.value);
+  onChange(inEvent) {
+    console.log('value:', inEvent.target.value);
   }
 
   render() {
     return (
       <div className="app-container">
-        <ReactSelect defaultValue="v1" items={this.state.items} onChange={this._onChange} />
+        <p>
+          <ReactSelect
+            defaultValue={['v1']}
+            multiple
+            items={this.state.items}
+            onChange={this.onChange}
+          />
+        </p>
+
+        <p>
+          <ReactSelect
+            defaultValue="v2"
+            items={this.state.items}
+            onChange={this.onChange}
+          />
+        </p>
       </div>
     );
   }
