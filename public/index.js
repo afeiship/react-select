@@ -35,7 +35,7 @@ class App extends React.Component {
       <div className="app-container">
         <p>
           <ReactSelect
-            defaultValue={['v1']}
+            defaultValue={['v1','v2']}
             multiple
             items={this.state.items}
             onChange={this.onChange}
