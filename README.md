@@ -12,7 +12,16 @@ npm install -S @jswork/react-select
 ```
 
 ## properties
-__GENERATE_DOCS__
+| Name         | Type   | Required | Default | Description                     |
+| ------------ | ------ | -------- | ------- | ------------------------------- |
+| className    | string | false    | -       | The extended class name.        |
+| defaultValue | any    | false    | -       | Default value for form control. |
+| value        | any    | false    | -       | Runtime value for form control. |
+| multiple     | bool   | false    | false   | If value support multiple.      |
+| items        | array  | false    | []      | The select options.             |
+| template     | func   | false    | -       | The option template.            |
+| onChange     | func   | false    | noop    | The handler when value changed. |
+
 
 ## usage
 1. import css
@@ -27,7 +36,67 @@ __GENERATE_DOCS__
   ```
 2. import js
   ```js
-__GENERATE_DAPP__
+  import ReactDemokit from '@jswork/react-demokit';
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import ReactSelect from '@jswork/react-select';
+  import './assets/style.scss';
+
+  class App extends React.Component {
+    state = {
+      items: [
+        {
+          label: 'optino1',
+          value: 'v1'
+        },
+        {
+          label: 'optino2',
+          value: 'v2'
+        },
+        {
+          label: 'optino3',
+          value: 'v3'
+        }
+      ]
+    };
+
+    constructor(inProps) {
+      super(inProps);
+      this.onChange = this.onChange.bind(this);
+    }
+
+    onChange(inEvent) {
+      console.log('value:', inEvent.target.value);
+    }
+
+    render() {
+      return (
+        <ReactDemokit
+          className="p-3 app-container"
+          url="https://github.com/afeiship/react-select">
+          <p>
+            <ReactSelect
+              defaultValue={['v1', 'v2']}
+              multiple
+              items={this.state.items}
+              onChange={this.onChange}
+            />
+          </p>
+
+          <p>
+            <ReactSelect
+              defaultValue="v2"
+              items={this.state.items}
+              onChange={this.onChange}
+            />
+          </p>
+        </ReactDemokit>
+      );
+    }
+  }
+
+  ReactDOM.render(<App />, document.getElementById('app'));
+
   ```
 
 ## documentation

@@ -13,7 +13,7 @@ const DEFAULT_TEMPLATE = ({ item, index }) => {
   );
 };
 
-export default class extends Component {
+export default class ReactSelect extends Component {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static propTypes = {
