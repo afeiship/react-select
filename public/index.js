@@ -1,6 +1,7 @@
-import ReactSelect from '../src/main';
-import ReactDOM from 'react-dom';
+import ReactDemokit from '@jswork/react-demokit';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactSelect from '../src/main';
 import './assets/style.scss';
 
 class App extends React.Component {
@@ -32,10 +33,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="app-container">
+      <ReactDemokit
+        className="p-3 app-container"
+        url="https://github.com/afeiship/react-select">
         <p>
           <ReactSelect
-            defaultValue={['v1','v2']}
+            defaultValue={['v1', 'v2']}
             multiple
             items={this.state.items}
             onChange={this.onChange}
@@ -49,7 +52,7 @@ class App extends React.Component {
             onChange={this.onChange}
           />
         </p>
-      </div>
+      </ReactDemokit>
     );
   }
 }

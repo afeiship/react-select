@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import noop from '@feizheng/noop';
-import objectAssign from 'object-assign';
+import noop from '@jswork/noop';
 
 const CLASS_NAME = 'react-select';
 const DEFAULT_TEMPLATE = ({ item, index }) => {
@@ -65,3 +63,4 @@ export default class extends Component {
     );
   }
 }
+
