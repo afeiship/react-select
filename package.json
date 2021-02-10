@@ -20,17 +20,10 @@
     "url": "git+https://github.com/afeiship/react-select.git"
   },
   "keywords": [
-    "boilerplate",
     "react",
-    "component",
-    "cra",
-    "template",
-    "webpack",
-    "sass",
-    "scss",
-    "docs",
-    "service-worker",
-    "sw"
+    "select",
+    "native",
+    "option"
   ],
   "author": "afei",
   "license": "MIT",

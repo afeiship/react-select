@@ -17,11 +17,33 @@ export default class extends Component {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static propTypes = {
+    /**
+     * The extended class name.
+     */
     className: PropTypes.string,
+    /**
+     * Default value for form control.
+     */
     defaultValue: PropTypes.any,
+    /**
+     * Runtime value for form control.
+     */
     value: PropTypes.any,
+    /**
+     * If value support multiple.
+     */
     multiple: PropTypes.bool,
+    /**
+     * The select options.
+     */
     items: PropTypes.array,
+    /**
+     * The option template.
+     */
+    template: PropTypes.func,
+    /**
+     * The handler when value changed.
+     */
     onChange: PropTypes.func
   };
 
@@ -63,4 +85,3 @@ export default class extends Component {
     );
   }
 }
-
